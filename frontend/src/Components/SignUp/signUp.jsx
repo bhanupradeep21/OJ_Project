@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './signUp.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const Signup = () => {
 
@@ -57,6 +57,7 @@ const Signup = () => {
         <input type="date" value={formData.dateofjoining} name='dateofjoining' onChange={onChange} placeholder="Date of Joining" />
         <textarea value={formData.profileinfo} name='profileinfo' onChange={onChange} placeholder="Profile Information"/>
         <button type="submit">Sign Up</button>
+        <p>Already have an account?<Link to="/login">Login</Link></p>
       </form>
     </div>
   );
