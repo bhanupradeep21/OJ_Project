@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './login.module.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email,setEmail] = useState('');
@@ -32,8 +32,6 @@ export default function Login() {
 
     const responseData = await response.json();
     console.log(responseData);
-    localStorage.setItem('token',responseData.token)
-    localStorage.setItem('userid',responseData.userid)
     navigate('/home')
     
   }
@@ -56,6 +54,7 @@ export default function Login() {
         <input type="email" placeholder="Email" name="email" value={email} onChange={(e) =>onChange(e)}/>
         <input type="password" placeholder="Password" name="password" value={password} onChange={(e) =>onChange(e)}/>
         <button type="submit">Login</button>
+        <p>Don't have an account? <Link to='/'>Register</Link></p>
       </form>
     </div>
     </>

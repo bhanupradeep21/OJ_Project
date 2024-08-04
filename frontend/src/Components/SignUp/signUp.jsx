@@ -27,7 +27,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/auth/signup', {
+      const response = await fetch('http://localhost:8000/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ const Signup = () => {
         <input type="date" value={formData.dateofjoining} name='dateofjoining' onChange={onChange} placeholder="Date of Joining" />
         <textarea value={formData.profileinfo} name='profileinfo' onChange={onChange} placeholder="Profile Information"/>
         <button type="submit">Sign Up</button>
-        <p>Already have an account?<Link to="/login">Login</Link></p>
+        <p>Already have an account?   <Link to="/login">Login</Link></p>
       </form>
     </div>
   );
