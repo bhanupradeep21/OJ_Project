@@ -19,16 +19,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: Date.now
-    },
-    profileinfo: {
-        bio: {
-            type: String,
-            default: ''
-        },
-        otherinfo: {
-            type: mongoose.Schema.Types.Mixed,
-            default: {}
-        }
     }
 });
 

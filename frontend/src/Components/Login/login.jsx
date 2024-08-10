@@ -50,12 +50,22 @@ export default function Login() {
     <>
     <div className={styles.container}>
       <h2>Login</h2>
+
       <form onSubmit={onSubmit} className={styles.form}>
-        <input type="email" placeholder="Email" name="email" value={email} onChange={(e) =>onChange(e)}/>
-        <input type="password" placeholder="Password" name="password" value={password} onChange={(e) =>onChange(e)}/>
-        <button type="submit">Login</button>
-        <p>Don't have an account? <Link to='/'>Register</Link></p>
+        {/* <input type="email" placeholder="Email" name="email" value={email} onChange={(e) =>onChange(e)}/>
+        <input type="password" placeholder="Password" name="password" value={password} onChange={(e) =>onChange(e)}/> */}
+
+        <div className={styles.inputContainer}>
+          <span className={styles.icon}><i className="fas fa-envelope"></i></span>
+          <input type="email" value={email} name="email" onChange={onChange} placeholder="Email" className={styles.input}/></div>
+        <div className={styles.inputContainer}>
+          <span className={styles.icon}><i className="fas fa-lock"></i></span>
+          <input type="password" value={password} name="password" onChange={onChange} placeholder="Password" className={styles.input}/></div>
+
+        <button type="submit"  className={`${styles.btn} ${styles['sign-up']}`}>Login</button>
       </form>
+
+      <p style={{ fontSize: '20px',marginLeft:'40px' }}>Not a user?{' '}<Link to="/" className={`${styles.btn} ${styles['sign-in']}`}>Sign Up</Link></p>
     </div>
     </>
   );

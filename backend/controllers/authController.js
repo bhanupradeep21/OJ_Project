@@ -8,7 +8,7 @@ dotenv.config();
 
 const register = async (req, res) => {
     try {
-        const { name, email, password, dateofjoining, profileinfo } = req.body;
+        const { name, email, password, dateofjoining } = req.body;
 
         //check user already exists
         const existingUser = await User.findOne({ email });
@@ -16,11 +16,11 @@ const register = async (req, res) => {
         if (!existingUser) {
             try {
                 const hashedpassword = await bcrypt.hash(password, 12)
-                const user = await User.create({ name, email, password: hashedpassword, dateofjoining, profileinfo });
+                const user = await User.create({ name, email, password: hashedpassword, dateofjoining });
 
                 const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRESIN });
 
-                // store token in the form of cookie in clien t side
+                // store token in the form of cookie in client side
                 res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'Strict' })
 
                 res.status(201).json({ message: 'User Succesfully registered', userdata: user })

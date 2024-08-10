@@ -8,8 +8,7 @@ const Signup = () => {
     name: '',
     email: '',
     password: '',
-    dateofjoining: '',
-    profileinfo: ''
+    dateofjoining: ''
   });
 
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.name === '' || formData.email === '' || formData.password === '' || formData.dateofjoining === '' || formData.profileinfo === '') {
+    if (formData.name === '' || formData.email === '' || formData.password === '' || formData.dateofjoining === '' ) {
       alert('All fields are required');
       return;
     }
@@ -51,14 +50,55 @@ const Signup = () => {
     <div className={styles.container}>
       <h2>Sign Up</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input type="text" value={formData.name} name='name' onChange={onChange} placeholder="Name"/>
-        <input type="email" value={formData.email} name='email' onChange={onChange} placeholder="Email"/>
-        <input type="password" value={formData.password} name='password' onChange={onChange} placeholder="Password" />
-        <input type="date" value={formData.dateofjoining} name='dateofjoining' onChange={onChange} placeholder="Date of Joining" />
-        <textarea value={formData.profileinfo} name='profileinfo' onChange={onChange} placeholder="Profile Information"/>
-        <button type="submit">Sign Up</button>
-        <p>Already have an account?   <Link to="/login">Login</Link></p>
+
+      <div className={styles.inputContainer}>
+          <span className={styles.icon} ><i className="fas fa-user"></i></span>
+          <input
+            type="text"
+            value={formData.name}
+            name="name"
+            onChange={onChange}
+            placeholder="Name"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <span className={styles.icon}><i className="fas fa-envelope"></i></span>
+          <input
+            type="email"
+            value={formData.email}
+            name="email"
+            onChange={onChange}
+            placeholder="Email"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <span className={styles.icon}><i className="fas fa-lock"></i></span>
+          <input
+            type="password"
+            value={formData.password}
+            name="password"
+            onChange={onChange}
+            placeholder="Password"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <span className={styles.icon}><i className="fas fa-calendar-alt"></i></span>
+          <input
+            type="date"
+            value={formData.dateofjoining}
+            name="dateofjoining"
+            onChange={onChange}
+            placeholder="Date of Joining"
+            className={styles.input}
+          />
+        </div>
+
+      <button type='submit' className={`${styles.btn} ${styles['sign-up']}`}>sign up</button>
       </form>
+      <p style={{ fontSize: '19px' }}>Already have an account?{' '}<Link to="/login" className={`${styles.btn} ${styles['sign-in']}`}>Login</Link></p>
     </div>
   );
 };
